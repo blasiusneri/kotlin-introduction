@@ -1,0 +1,145 @@
+/***********************/
+/*Variable declaration */
+/***********************/
+var counter:Int = 5
+counter = 10 //10 assign to counter
+
+val maxCounter:Int = 5
+maxCounter = 10 // compile error
+
+
+
+/*********************/
+/*Null safety        */
+/*********************/
+//var counter:Int = 5 ​
+var counter = 5 ​
+// type inference ​
+counter = 10 //10 assign to counter ​
+
+val language = “English” ​
+//type inference 
+language.toUpperCase language.inc() //compile error
+
+/*********************/
+/*Null safety        */
+/*********************/
+var counter:Int? = null ​
+var counter = null //compile error
+
+
+/*********************/
+/*Conditional        */
+/*********************/
+//conditional 1
+if (rightAnswer == 10) { ​
+println("You got perfect test score") ​
+} else { ​
+//println("Your score is " + rightAnswer) ​
+println("Your score is $rightAnswer") ​
+}
+
+//conditional 2
+if (rightAnswer == 10) { ​
+println("You got perfect test score") ​
+} else if (rightAnswer == 9) {​
+println("You almost got a perfect test score") ​
+} else { ​
+//println("Your score is " + rightAnswer) ​
+println("Your score is $rightAnswer") ​
+}
+
+//conditional 3
+val finalResult: String = when {​
+(rightAnswer == 10) -> "You got perfect test score" ​
+(rightAnswer == 9) -> "You almost got a perfect test score" ​
+else -> “Your score is $rightAnswer" ​
+} ​
+
+
+//conditional 4
+val languageName: String? = null ​
+if (languageName != null) { ​
+// No need to write languageName?.toUpperCase() ​
+println(languageName.toUpperCase()) ​
+}
+println(finalResult)
+
+/*********************/
+/*No Ternary         */
+/*********************/
+//no ternary operator in Kotlin​
+Boolean finalResult = (rightAnswer == 10)? "You got perfect test score" ​: "Your score is $rightAnswer"
+
+
+/*********************/
+/*Function          */
+/*********************/
+//Function1
+fun getFinalResult(rightAnswer : Int){ ​
+when {​
+(rightAnswer == 10) -> println ("You got perfect test score”) ​
+(rightAnswer == 9) -> println("You almost got a perfect test score”) ​
+else -> println(“Your score is $rightAnswer”)​
+}​
+}​ 
+
+//Function2
+//non-void function​
+fun getFinalResult(rightAnswer : Int): String {​
+when {​
+(rightAnswer == 10) -> return "You got perfect test score”​
+(rightAnswer == 9) -> return  "You almost got a perfect test score”​
+else -> return “Your score is $rightAnswer”​
+}​
+}​
+
+//or​
+fun getFinalResult(rightAnswer : Int): String = when {​
+(rightAnswer == 10) -> "You got perfect test score”​
+(rightAnswer == 9) -> "You almost got a perfect test score”​
+else -> “Your score is $rightAnswer”​
+}
+
+/*********************/
+/*Anonymous Function */
+/*********************/
+val stringLengthFunc: (String) -> Int = { ​
+input -> input.length ​
+}​
+println(stringLengthFunc(“Android”))//7​
+
+val sum: (Int, Int) -> Int = { ​
+a, b -> a + b ​
+}​
+printl(sum(3,4))//7
+
+/************************/
+/*Higher-Order Function */
+/************************/
+fun stringMapper(str: String, mapper: (String) -> Int): Int { ​
+return mapper(str) ​
+}​
+​
+
+println(stringMapper("Android", {input -> input.length }))​
+//or​
+//if the anonymous function is the last parameter​
+println(stringMapper("Android”){input -> input.length })
+
+/************************/
+/*Define Class          */
+/************************/
+class Person {​
+}​
+
+data class Person(name: String)​
+​
+class Department {​
+val persons = listOf<Person>​
+}​
+
+//can be simplified by set by constructor​
+class Department(val persons: List<Person>)​
+
+
